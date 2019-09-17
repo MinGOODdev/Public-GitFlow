@@ -1,0 +1,34 @@
+{{#partial "content"}}
+    <div class="form-group margin-auto question-width">
+        <form action="/newbie/back/create" method="post">
+      <textarea class="form-control" name="content" id="body" cols="20" rows="5"
+                placeholder="질문 10글자 이상부터 작성됩니다."></textarea>
+            <button type="submit" class="btn btn-primary question-btn-margin-top">질문 남기기</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <div class="form-group margin-auto question-width">
+        <p>뉴비톤 백엔드 질문 게시판</p>
+        {{#backs}}
+            <textarea cols="20" rows="5" class="form-control a-hover" readonly>{{content}}</textarea>
+            <hr>
+        {{/backs}}
+    </div>
+
+    <ul class="pagination justify-content-center pg-margin-bottom">
+        <li class="page-item">
+            {{#if pgStart}}
+                <a href="/newbie/back/all?pg={{pgPrev}}" class="page-pink">이전&nbsp;</a>
+            {{/if}}
+        </li>
+        <li class="page-item">
+            {{#if pgEnd}}
+                <a href="/newbie/back/all?pg={{pgNext}}" class="page-pink">&nbsp;다음</a>
+            {{/if}}
+        </li>
+    </ul>
+{{/partial}}
+
+{{>base}}

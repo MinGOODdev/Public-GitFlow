@@ -1,0 +1,23 @@
+{{#partial "content"}}
+  <h2 class="text-center"><b>{{applyPart.partName}} 파트 지원서 목록</b></h2>
+  <div class="table-responsive margin-auto text-center" style="width: 40%;">
+    <table class="table table-hover table-bordered">
+      <thead class="thead-light">
+      <tr>
+        <td>지원자</td>
+      </tr>
+      </thead>
+      <tbody>
+      {{#applyContents}}
+        <tr>
+          <td style="width: 20%">
+            <a href="/admin/apply/{{applyPart.id}}/{{id}}">{{userName}}</a>
+          </td>
+        </tr>
+      {{/applyContents}}
+      </tbody>
+    </table>
+  </div>
+{{/partial}}
+
+{{>base}}

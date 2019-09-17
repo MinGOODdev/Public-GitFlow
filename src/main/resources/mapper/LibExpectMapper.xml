@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingood.gitup.mapper.LibExpectMapper">
+
+    <select id="findAll" resultType="LibExpect">
+        SELECT * FROM libexpect
+    </select>
+
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO libexpect (fileName, codeLine)
+        VALUES (#{fileName}, #{codeLine})
+    </insert>
+
+    <delete id="deleteAll">
+        DELETE FROM libexpect
+    </delete>
+
+</mapper>

@@ -1,0 +1,59 @@
+{{#partial "content"}}
+  <div class="text-center margin-auto">
+    <div class="alert alert-success" role="alert">
+      <h5>{{gitUrl}}</h5>
+    </div>
+
+    <hr>
+
+    <div class="alert alert-success" role="alert">
+      <h5>코드 라인 수 계산 결과입니다.</h5>
+    </div>
+    <div class="table-responsive text-center margin-auto">
+      <table class="table table-bordered table-hover margin-auto" style="width: 60%;">
+        <thead>
+        <tr>
+          <td>Language</td>
+          <td>Code Line</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each resultMap}}
+          <tr>
+            <td>{{@key}}</td>
+            <td>{{this}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+
+      <hr>
+
+      <div class="alert alert-success" role="alert">
+        <h5>세부 파일 코드 라인 수</h5>
+      </div>
+      <table class="table table-bordered table-hover margin-auto" style="background-color: lightgrey;">
+        <thead>
+        <tr>
+          <td>FileName</td>
+          <td>Code Line</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each logMap}}
+          <tr>
+            <td>{{@key}}</td>
+            <td>{{this}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="pg-margin-bottom">
+      <!--<a href="/analysis/window" class="btn btn-info">입력 화면 Window</a>-->
+      <a href="/analysis/linux" class="btn btn-info">입력 화면 Linux</a>
+    </div>
+  </div>
+{{/partial}}
+
+{{>base}}

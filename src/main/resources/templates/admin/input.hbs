@@ -1,0 +1,18 @@
+{{#partial "content"}}
+  <div class="margin-auto text-center analysis-margin-top">
+    <h3>RepoOwner와 협업 RepoName을 입력해주세요.</h3>
+    <hr>
+    <form action="/admin/result" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control margin-auto" name="repoOwner"
+               placeholder="ex. mingooddev (repository 소유자)" style="width: 50%;">
+        <br>
+        <input type="text" class="form-control margin-auto" name="repoName"
+               placeholder="ex. HotComments (repository 이름)" style="width: 50%;">
+      </div>
+      <button type="submit" class="btn btn-primary">결과보기</button>
+    </form>
+  </div>
+{{/partial}}
+
+{{>base}}

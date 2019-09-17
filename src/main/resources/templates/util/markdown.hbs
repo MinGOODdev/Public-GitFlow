@@ -1,0 +1,25 @@
+{{#partial "markdown"}}
+    <div class="api-count">
+    </div>
+
+    <div class="api-count-content">
+        3000 이하부터는 오른쪽 영역 클릭 시 마크다운 확인이 가능 합니다.
+    </div>
+
+    <div class="title-frame">
+        <div class="title-left">마크다운
+            <img src="/img/copy.png" alt="copy" class="clip-board" onclick="copy_text()">
+        </div>
+        <div class="title-right">Readme.md</div>
+    </div>
+
+    <div class="markdown-frame">
+        <div class="markdown-left">
+            <textarea type="text" class="markdown-textarea"></textarea>
+        </div>
+
+        <div class="markdown-right"></div>
+    </div>
+{{/partial}}
+
+{{>base}}

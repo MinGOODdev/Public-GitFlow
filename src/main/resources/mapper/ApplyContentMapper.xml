@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingood.gitup.mapper.ApplyContentMapper">
+
+    <select id="findAllByPartId" resultType="ApplyContent">
+        SELECT a.*
+        FROM applycontent a
+        WHERE partId = #{partId}
+    </select>
+
+    <select id="findById" resultType="ApplyContent">
+        SELECT a.*
+        FROM applycontent a
+        WHERE id = #{id}
+    </select>
+
+    <select id="findByUserId" resultType="ApplyContent">
+        SELECT a.*
+        FROM applycontent a
+        WHERE userId = #{userId}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO applycontent (userId, partId, userName, phoneNumber, email, content1, content2, content3)
+        VALUES (#{userId}, #{partId}, #{userName}, #{phoneNumber}, #{email}, #{content1}, #{content2}, #{content3})
+    </insert>
+
+    <update id="update">
+        UPDATE applycontent
+        SET
+          userName = #{userName},
+          phoneNumber = #{phoneNumber},
+          email = #{email}
+          content1 = #{content1},
+          content2 = #{content2},
+          content3 = #{content3}
+        WHERE userId = #{userId}
+    </update>
+
+    <delete id="deleteByUserId">
+        DELETE FROM applycontent
+        WHERE userId = #{userId}
+    </delete>
+
+</mapper>

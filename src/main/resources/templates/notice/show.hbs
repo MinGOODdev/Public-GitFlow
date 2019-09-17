@@ -1,0 +1,25 @@
+{{#partial "content"}}
+  <div class="notice-margin-top">
+    <div class="notice-width margin-auto">
+      <h3>{{notice.title}}</h3>
+      <span class="fa fa-user-circle"></span> 관리자
+      <span class="far fa-clock"></span> {{notice.updatedAt}}
+
+      <hr>
+
+      <textarea cols="20" rows="20" class="form-control" readonly>{{notice.content}}</textarea>
+
+      <hr>
+
+      <div class="float-right">
+        <a href="/notice/all" class="btn btn-success">목록으로</a>
+        {{#if authFlag}}
+          <a href="/notice/edit?noticeId={{notice.id}}" class="btn btn-success">수정</a>
+          <a href="/notice/delete?noticeId={{notice.id}}" class="btn btn-danger">삭제</a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+{{/partial}}
+
+{{>base}}

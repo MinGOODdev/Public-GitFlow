@@ -1,0 +1,20 @@
+{{#partial "content"}}
+  <div class="form-group margin-auto notice-width notice-margin-top">
+    <form action="/notice/update" method="post" modelAttribute="noticeModel">
+      <input type="hidden" name="id" id="id" value="{{notice.id}}">
+      <input class="form-control" type="text" name="title" id="title" value="{{notice.title}}"
+             placeholder="공지사항 제목">
+
+      <hr>
+
+      <textarea class="form-control" name="content" id="content" cols="20" rows="20"
+                placeholder="공지사항 내용">{{notice.content}}</textarea>
+
+      <div class="float-right question-btn-margin-top pg-margin-bottom">
+        <button type="submit" class="btn btn-success">수정</button>
+      </div>
+    </form>
+  </div>
+{{/partial}}
+
+{{>base}}

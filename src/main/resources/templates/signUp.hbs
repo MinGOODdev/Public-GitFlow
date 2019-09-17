@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:form="http://www.w3.org/1999/html">
+
+<head>
+  <title>GitFlow</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="icon" href="/img/gitflow.png">
+  <link rel="stylesheet" href="/css/index.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+          integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+          integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+          crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="form-group text-center sign-up-margin-top">
+    <nav class="navbar bg-white">
+      <a href="/" class="navbar-brand">
+        <img class="nav-img" src="/img/gitflow.png" alt="GitFlow">
+      </a>
+    </nav>
+
+    <hr/>
+
+    <table class="margin-auto">
+      <h6 class="sign-up-margin-left" style="color: lightcoral">GitHub UserName, Password가 일치해야 가입하실 수 있습니다.</h6>
+      <h6 class="sign-up-margin-left" style="color: lightcoral">{{msg}}</h6>
+      <tr>
+        <td style="width: 40%;">
+          <div class="card custom-card border-light shadow bg-white rounded">
+            <img class="card-img-top sign-up-img" src="/img/sign_up_octocat.png" alt="UserAvatar">
+          </div>
+        </td>
+        <td style="width: 60%;">
+          <form class="sign-up-margin-left" action="/signUp" method="POST" modelAttribute="newbie">
+            <input class="form-control margin-auto sign-up-input-width" type="text" name="userName"
+                   placeholder="GitHub UserName"/>
+            <br/>
+            <input class="form-control margin-auto sign-up-input-width" type="password" name="password1"
+                   placeholder="Password"/>
+            <br/>
+            <input class="form-control margin-auto sign-up-input-width" type="password" name="password2"
+                   placeholder="Password Confirm"/>
+            <br/>
+            <select class="form-control margin-auto sign-up-input-width" name="departmentId">
+              {{#departments}}
+                <option value="{{id}}">{{departmentName}}</option>
+              {{/departments}}
+            </select>
+            <br/>
+            <button class="btn btn-dark" type="submit">가입하기</button>
+          </form>
+        </td>
+      </tr>
+    </table>
+
+    <hr/>
+
+    <h3>&copy; 2018 GitFlow. All Rights Reserved.</h3>
+  </div>
+
+</div>
+</body>
+
+</html>

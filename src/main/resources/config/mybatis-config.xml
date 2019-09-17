@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+        <package name="com.mingood.gitup.dto"/>
+    </typeAliases>
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/DepartmentMapper.xml"/>
+        <mapper resource="mapper/RepoMapper.xml"/>
+        <mapper resource="mapper/IncludeMapper.xml"/>
+        <mapper resource="mapper/ExcludeMapper.xml"/>
+        <mapper resource="mapper/IgnorePathMapper.xml"/>
+        <mapper resource="mapper/MustContainMapper.xml"/>
+        <mapper resource="mapper/QuestionMapper.xml"/>
+        <mapper resource="mapper/QuestionCommentMapper.xml"/>
+        <mapper resource="mapper/OptionFlagMapper.xml"/>
+        <mapper resource="mapper/NoticeMapper.xml"/>
+        <mapper resource="mapper/LibExpectMapper.xml"/>
+        <mapper resource="mapper/ApplyPartMapper.xml"/>
+        <mapper resource="mapper/ApplyFormMapper.xml"/>
+        <mapper resource="mapper/ApplyContentMapper.xml"/>
+        <mapper resource="mapper/FrontMapper.xml"/>
+        <mapper resource="mapper/BackMapper.xml"/>
+    </mappers>
+</configuration>

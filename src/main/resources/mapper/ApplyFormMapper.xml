@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingood.gitup.mapper.ApplyFormMapper">
+
+    <select id="findById" resultType="ApplyForm">
+        SELECT a.*
+        FROM applyform a
+        WHERE id = #{id}
+    </select>
+
+    <select id="findByPartId" resultType="ApplyForm">
+        SELECT a.*
+        FROM applyform a
+        WHERE partId = #{partId}
+    </select>
+
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingood.gitup.mapper.OptionFlagMapper">
+
+    <select id="findById" resultType="OptionFlag">
+        SELECT * FROM optionflag
+        WHERE id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE optionflag
+        SET
+          schedulerActive = #{schedulerActive}
+        WHERE id = #{id}
+    </update>
+
+    <update id="optionFlagUpdate">
+        UPDATE optionflag
+        SET
+          schedulerActive = #{schedulerActive},
+          startedAt = #{startedAt},
+          endedAt = #{endedAt}
+        WHERE id = #{id}
+    </update>
+
+    <update id="tempOddUpdate">
+        UPDATE optionflag
+        SET
+          schedulerActive = #{schedulerActive},
+          oddStartedAt = #{oddStartedAt},
+          oddEndedAt = #{oddEndedAt},
+          oddLimit = #{oddLimit}
+        WHERE id = #{id}
+    </update>
+
+    <update id="tempEvenUpdate">
+        UPDATE optionflag
+        SET
+          schedulerActive = #{schedulerActive},
+          evenStartedAt = #{evenStartedAt},
+          evenEndedAt = #{evenEndedAt},
+          evenLimit = #{evenLimit}
+        WHERE id = #{id}
+    </update>
+
+</mapper>

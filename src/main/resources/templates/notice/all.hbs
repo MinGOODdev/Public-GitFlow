@@ -1,0 +1,55 @@
+{{#partial "content"}}
+  <div class="menu-margin-bottom notice-margin-top">
+    {{#if authFlag}}
+      <div class="float-right menu-margin-bottom">
+        <a href="/notice/new" class="btn btn-dark">New Notice</a>
+      </div>
+    {{/if}}
+
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered">
+        <thead class="thead-light">
+        <tr>
+          <td>공지사항</td>
+          <td>작성자</td>
+          <td>작성 시간</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#notices}}
+          <tr data-url="/notice/{{id}}" class="a-hover">
+            <td style="width: 70%;">{{title}}</td>
+            <td style="width: 10%;">관리자</td>
+            <td style="witdh: 20%;">{{updatedAt}}</td>
+          </tr>
+        {{/notices}}
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="pagination justify-content-center pg-margin-bottom">
+      <li class="page-item">
+        {{#if pgStart}}
+          <a href="/notice/all?pg={{pgPrev}}" class="page-pink">이전&nbsp;</a>
+        {{/if}}
+      </li>
+      <li class="page-item">
+        {{#if pgEnd}}
+          <a href="/notice/all?pg={{pgNext}}" class="page-pink">&nbsp;다음</a>
+        {{/if}}
+      </li>
+    </ul>
+  </div>
+
+  <!-- javascript -->
+  <script>
+    $(function () {
+      $("[data-url]").click(function () {
+        var url = $(this).attr("data-url");
+        location.href = url;
+      })
+    })
+  </script>
+{{/partial}}
+
+{{>base}}

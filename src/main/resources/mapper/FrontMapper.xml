@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingood.gitup.mapper.FrontMapper">
+
+    <select id="findAll" resultType="Front">
+        <bind name="start" value="(pg - 1) * sz"/>
+        SELECT * FROM front
+        ORDER BY id DESC
+        LIMIT ${start}, ${sz}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="string">
+        INSERT INTO front (content)
+        VALUES (#{content})
+    </insert>
+
+    <select id="count" resultType="int">
+        SELECT COUNT(f.id)
+        FROM front f
+    </select>
+
+</mapper>

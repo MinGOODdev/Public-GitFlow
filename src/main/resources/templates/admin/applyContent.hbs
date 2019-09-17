@@ -1,0 +1,50 @@
+{{#partial "content"}}
+  <h2 class="text-center">
+    <strong class="home-english-font">GitFlow</strong>
+    <strong>{{partName}} 파트 지원서</strong>
+  </h2>
+
+  <hr>
+
+  {{#applyContent}}
+    <div class="row" style="width: 78%; margin: auto;">
+      <div class="col-sm">
+        <label for="userName"><h4><span class="badge badge-dark">지원자 성함</span></h4></label>
+        <input type="text" class="form-control" name="userName" value="{{userName}}" readonly>
+      </div>
+
+      <div class="col-sm">
+        <label for="phoneNumber"><h4><span class="badge badge-dark">연락처</span></h4></label>
+        <input type="text" class="form-control" name="phoneNumber" value="{{phoneNumber}}" readonly>
+      </div>
+
+      <div class="col-sm">
+        <label for="email"><h4><span class="badge badge-dark">이메일</span></h4></label>
+        <input type="email" class="form-control" name="email" value="{{email}}" readonly>
+      </div>
+    </div>
+
+    <hr>
+
+    {{#applyForm}}
+      <div class="form-group margin-auto notice-width">
+        <label for="content1"><b>{{form1}}</b></label>
+        <textarea class="form-control" name="content1" cols="20" rows="10" readonly>{{content1}}</textarea>
+
+        <hr>
+
+        <label for="content2"><b>{{form2}}</b></label>
+        <textarea class="form-control" name="content2" cols="20" rows="10" readonly>{{content2}}</textarea>
+
+        <hr>
+
+        <label for="content3"><b>{{form3}}</b></label>
+        <textarea class="form-control" name="content3" cols="20" rows="10" readonly>{{content3}}</textarea>
+      </div>
+    {{/applyForm}}
+
+    <hr>
+  {{/applyContent}}
+{{/partial}}
+
+{{>base}}

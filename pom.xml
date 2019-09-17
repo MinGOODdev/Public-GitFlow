@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.gitflow</groupId>
-    <artifactId>toy</artifactId>
+    <artifactId>sw</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>GitFlow</name>
     <description>GitFlow project for Spring Boot</description>

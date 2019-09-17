@@ -1,0 +1,28 @@
+{{#partial "content"}}
+  <div class="text-center margin-auto">
+    <div class="alert alert-success" role="alert">
+      <h5>코드 라인 수 계산 결과입니다.</h5>
+    </div>
+
+    <div class="table-responsive text-center margin-auto">
+      <table class="table table-bordered table-hover margin-auto" style="width: 60%;">
+        <thead>
+        <tr>
+          <td>Language</td>
+          <td>Code Line</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each resultMap}}
+          <tr>
+            <td>{{@key}}</td>
+            <td>{{this}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{{/partial}}
+
+{{>base}}

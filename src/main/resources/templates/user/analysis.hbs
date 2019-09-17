@@ -1,0 +1,26 @@
+{{#partial "content"}}
+  <div class="margin-auto text-center analysis-margin-top">
+    <h3>일반 사용자를 위한 협업 Repo 분석 기능입니다.</h3>
+    <h3>UserName 과 Password 는 저장되지 않습니다.</h3>
+    <hr>
+    <form action="/user/analysis/result" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control margin-auto" name="login"
+               placeholder="ex. mingooddev (Github UserName)" style="width: 50%;">
+        <br>
+        <input type="password" class="form-control margin-auto" name="password"
+               placeholder="Github Password (저장되지 않습니다.)" style="width: 50%;">
+        <br>
+
+        <input type="text" class="form-control margin-auto" name="repoOwner"
+               placeholder="ex. mingooddev (repository 소유자)" style="width: 50%;">
+        <br>
+        <input type="text" class="form-control margin-auto" name="repoName"
+               placeholder="ex. HotComments (repository 이름)" style="width: 50%;">
+      </div>
+      <button type="submit" class="btn btn-primary">결과보기</button>
+    </form>
+  </div>
+{{/partial}}
+
+{{>base}}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingood.gitup.mapper.UserMapper">
+
+    <select id="findAllOrderByTotalUserCodeLineAsc" resultType="GitUser">
+        SELECT u.*, d.departmentName
+        FROM gituser u LEFT JOIN department d ON u.departmentId = d.id
+        ORDER BY u.totalUserCodeLine ASC
+    </select>
+
+    <select id="findAllOrderByTotalUserCodeLineDesc" resultType="GitUser">
+        SELECT u.*, d.departmentName
+        FROM gituser u LEFT JOIN department d ON u.departmentId = d.id
+        ORDER BY u.totalUserCodeLine DESC
+    </select>
+
+    <select id="findAllByDepartmentIdOrderByTotalUserCodeLineDesc" resultType="GitUser">
+        SELECT u.* FROM gituser u
+        WHERE departmentId = #{departmentId}
+        ORDER BY u.totalUserCodeLine DESC
+    </select>
+
+    <select id="findById" resultType="GitUser">
+        SELECT u.* FROM gituser u
+        WHERE u.id = #{id}
+    </select>
+
+    <select id="findByUserName" parameterType="String" resultType="GitUser">
+        SELECT * FROM gituser
+        WHERE login LIKE #{login}
+    </select>
+
+    <insert id="userInsert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO gituser (login, departmentId, password, profileUrl)
+        VALUES (#{login}, #{departmentId}, #{password}, #{profileUrl})
+    </insert>
+
+    <update id="userUpdate">
+        UPDATE gituser
+        <set>
+            <if test="departmentId != null and departmentId != 0"> departmentId = #{departmentId}, </if>
+            <if test="login != null"> login = #{login}, </if>
+            <if test="password != null"> password = #{password}, </if>
+            <if test="userLanguage != null"> userLanguage = #{userLanguage}, </if>
+            <if test="totalUserCommit != null"> totalUserCommit = #{totalUserCommit}, </if>
+            <if test="totalUserCodeLine != null"> totalUserCodeLine = #{totalUserCodeLine}, </if>
+            <if test="authorization != null"> authorization = #{authorization}, </if>
+            <if test="profileUrl != null"> profileUrl = #{profileUrl} </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="userDelete" parameterType="String">
+        DELETE FROM gituser
+        WHERE id = (
+          SELECT id
+          FROM (SELECT id FROM gituser WHERE login = #{login}) as tmp
+        )
+    </delete>
+
+</mapper>

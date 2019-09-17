@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    {{#block "header"}}
+        <title>GitFlow</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="icon" href="/img/gitflow.png">
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/markdown.css">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+              crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous"></script>
+
+        <script src="/js/common.js"></script>
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+              integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+              crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script|Yeon+Sung|Jua|Kaushan+Script|Noto+Sans+KR"
+              rel="stylesheet">
+    {{/block}}
+</head>
+
+<body>
+<div class="container">
+    {{#block "nav"}}
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+            <a class="navbar-brand" href="/">
+                <img src="/img/gitflow.png" width="50" height="50" class="d-inline-block align-top" alt="GitFlow">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    {{#if userCheckExist}}
+                        {{#currentUser}}
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle" href="#" id="currentUser" role="button"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <b>{{currentUser.login}}</b>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="currentUser">
+                                    <a href="/user/myInfo" class="dropdown-item">내 정보 수정</a>
+                                    <a href="/user/{{currentUser.id}}/repos" class="dropdown-item">My Repos</a>
+                                    <a href="/logout_processing" class="dropdown-item">Logout</a>
+                                </div>
+                            </li>
+                        {{/currentUser}}
+                    {{else}}
+                        <li class="nav-item active">
+                            <a href="/login" class="nav-link">Login</a>
+                        </li>
+                    {{/if}}
+
+                    <li class="nav-item active">
+                        <a href="/notice/all?pg=1" class="nav-link" style="color: mediumaquamarine;">Notice</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="/question/all?pg=1" class="nav-link">Q & A</a>
+                    </li>
+
+<!--                    <li class="nav-item dropdown active">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" id="ranking" role="button" data-toggle="dropdown"-->
+<!--                           aria-haspopup="true" aria-expanded="false" style="color: orangered;">-->
+<!--                            뉴비톤-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="ranking">-->
+<!--                            <a href="/newbie/front/all?pg=1" class="dropdown-item">Front QA</a>-->
+<!--                            <a href="/newbie/back/all?pg=1" class="dropdown-item">Back QA</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="ranking" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Ranking
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="ranking">
+                            {{#departments}}
+                                <a href="/users?departmentId={{id}}" class="dropdown-item">{{departmentName}}</a>
+                            {{/departments}}
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="analysis" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Analysis
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="analysis">
+                            <a href="/analysis/linux" class="dropdown-item">Repository 분석</a>
+                            <a href="/nofilter/analysis/linux" class="dropdown-item">No Filtering 분석</a>
+                            <a href="/user/analysis" class="dropdown-item">협업 Repo 분석 for user</a>
+                            {{#if authFlag}}
+                                <a href="/admin/analysis" class="dropdown-item">Collaboration 분석</a>
+                            {{/if}}
+                        </div>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a href="/util/markdown" class="nav-link">README 연습</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a href="https://opentutorials.org/course/2708" class="nav-link" target="_blank">Learn
+                            Github</a>
+                    </li>
+
+                    <!-- 지원 기간일 경우 -->
+                    {{#if optionFlag}}
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="apply" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                지원(Apply)
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="apply">
+                                <a href="/apply/main" class="dropdown-item">지원하기</a>
+                                <!-- 관리자 기능 -->
+                                {{#if authFlag}}
+                                    <a href="/admin/apply/1" class="dropdown-item">기획/홍보/운영 파트</a>
+                                    <a href="/admin/apply/2" class="dropdown-item">개발 파트</a>
+                                {{/if}}
+                            </div>
+                        </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </nav>
+    {{/block}}
+
+    {{#block "content"}}{{/block}}
+</div>
+
+{{#block "markdown"}}{{/block}}
+</body>
+
+<!--javascript-->
+<script src="/webjars/jquery/3.3.1/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/js/markdown.js"></script>
+
+</html>

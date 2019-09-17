@@ -1,0 +1,36 @@
+{{#partial "content"}}
+  <div class="form-group margin-auto question-width">
+    <form action="/question/create" method="post" modelAttribute="questionModel">
+      <textarea class="form-control" name="body" id="body" cols="20" rows="5"
+                placeholder="질문 10글자 이상부터 작성됩니다."></textarea>
+      <button type="submit" class="btn btn-primary question-btn-margin-top">질문 남기기</button>
+    </form>
+  </div>
+
+  <hr>
+
+  <div class="form-group margin-auto question-width">
+    {{#questions}}
+      <p>{{createdAt}}</p>
+      <a href="/question/{{id}}/comments" class="text-dark">
+        <textarea cols="20" rows="1" class="form-control a-hover" readonly>{{content}}</textarea>
+      </a>
+      <hr>
+    {{/questions}}
+  </div>
+
+  <ul class="pagination justify-content-center pg-margin-bottom">
+    <li class="page-item">
+      {{#if pgStart}}
+        <a href="/question/all?pg={{pgPrev}}" class="page-pink">이전&nbsp;</a>
+      {{/if}}
+    </li>
+    <li class="page-item">
+      {{#if pgEnd}}
+        <a href="/question/all?pg={{pgNext}}" class="page-pink">&nbsp;다음</a>
+      {{/if}}
+    </li>
+  </ul>
+{{/partial}}
+
+{{>base}}

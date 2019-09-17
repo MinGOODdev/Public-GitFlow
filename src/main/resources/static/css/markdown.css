@@ -1,0 +1,70 @@
+/*markdown.hbs*/
+.api-count, .api-count-content {
+    text-align: center;
+}
+
+.api-count {
+    font-size: 30px;
+}
+
+.api-count-content {
+    color: mediumaquamarine;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.markdown-frame {
+    height: 70%;
+    margin: 0 20px 0 20px;
+}
+
+.markdown-frame > div {
+    height: 100%;
+    width: 49%;
+    border-radius: 5px;
+}
+
+.markdown-left {
+    float: left;
+    border: black solid thin;
+}
+
+.markdown-right {
+    float: right;
+    border: black dashed thin;
+    cursor: pointer;
+    background-color: aliceblue;
+    padding: 10px;
+    overflow: auto;
+}
+
+.markdown-textarea {
+    height: 100%;
+    width: 100%;
+    resize: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.title-frame {
+    margin: 0 20px 0 20px;
+}
+
+.title-frame > div {
+    width: 49%;
+    padding-left: 5px;
+}
+
+.title-left {
+    float: left;
+}
+
+.title-right {
+    float: right;
+}
+
+.clip-board {
+    cursor: pointer;
+    width: 20px;
+    float: right;
+}

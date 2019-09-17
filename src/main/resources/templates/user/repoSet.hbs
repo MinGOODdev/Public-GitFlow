@@ -1,0 +1,42 @@
+{{#partial "content"}}
+  <div class="card-body margin-auto text-center">
+    <h2 class="text-center">{{user.login}}</h2>
+    <h5>
+      <span class="badge badge-pill badge-warning">User's TotalCommit</span> {{user.totalUserCommit}}&nbsp;&nbsp;
+      <span class="badge badge-pill badge-warning">User's TotalCodeLine</span> {{user.totalUserCodeLine}}
+    </h5>
+  </div>
+
+  {{#repoList}}
+    <div class="card border-dark margin-auto repo-set-width-margin">
+      <h5 class="card-header">
+        <span class="badge badge-primary">RepoName</span>
+        <a href="{{repoUrl}}" target="_blank">{{repoName}}</a>
+      </h5>
+      <div class="card-body">
+        <h5 class="card-title">
+          <button type="button" class="btn btn-light">
+            {{repoLanguage}}&nbsp;<span class="badge badge-light">Language</span>
+          </button>
+          <button type="button" class="btn btn-light">
+            {{contributors}}명&nbsp;<span class="badge badge-light">Contributors</span>
+          </button>
+        </h5>
+
+        <h5 class="card-title">
+          <button type="button" class="btn btn-success">
+            {{userCommitCount}} / {{allCommitCount}}&nbsp;&nbsp;<span class="badge badge-light">UserCommit / TotalCommit</span>
+          </button>
+        </h5>
+
+        <h5>
+          <button type="button" class="btn btn-danger">
+            {{userCodeLine}} / {{totalCodeLine}}&nbsp;&nbsp;<span class="badge badge-light">UserCodeLine / TotalCodeLine</span>
+          </button>
+        </h5>
+      </div>
+    </div>
+  {{/repoList}}
+{{/partial}}
+
+{{>base}}

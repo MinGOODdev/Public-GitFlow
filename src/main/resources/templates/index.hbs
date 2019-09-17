@@ -1,0 +1,33 @@
+{{#partial "content"}}
+  <h2 class="text-center"><strong class="home-developer-name">{{departmentName}}</strong></h2>
+  {{#if rankFlag}}
+    <h2 class="text-center">
+      <span class="badge badge-primary">Rank By TotalCodeLine {{totalCodeLineRank}}위</span>
+    </h2>
+  {{/if}}
+
+  <div class="margin-auto text-center">
+    <h6 class="index-msg"><b>여러분 너무 코드 라인 수에 연연하지 마세요. 코드 라인 수가 많다고 무조건 좋은 건 아니잖아요.</b></h6>
+    <h6 class="index-msg"><b>본인의 전체 코드 양이 증가하는 걸 보시면서 성취감을 느끼시길 바랍니다.</b></h6>
+  </div>
+
+  <div class="row text-center">
+    {{#gitUserList}}
+      <div class="col-sm">
+        <div class="card custom-card border-light shadow p-3 mb-5 bg-white rounded">
+          <a href="/user/{{id}}/repos">
+            <img class="card-img-top" src="{{profileUrl}}" alt="UserAvatar">
+            <div class="card-body text-dark">
+              <h2><span class="badge badge-dark">{{totalUserCodeLine}}</span></h2>
+              <h6><p class="card-text text-dark">{{userLanguage}}</p></h6>
+              <h6><p class="card-text text-dark">{{departmentName}}</p></h6>
+              <h6><p class="card-text text-dark">{{login}}</p></h6>
+            </div>
+          </a>
+        </div>
+      </div>
+    {{/gitUserList}}
+  </div>
+{{/partial}}
+
+{{>base}}

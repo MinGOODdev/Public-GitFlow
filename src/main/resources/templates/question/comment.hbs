@@ -1,0 +1,28 @@
+{{#partial "content"}}
+  <div class="form-group margin-auto question-width">
+    <form action="/question/comment/create" method="post" modelAttribute="questionCommentModel">
+      <input type="hidden" name="questionId" value="{{questionId}}"/>
+      <textarea class="form-control" name="comment" id="comment" cols="20" rows="5"
+                placeholder="댓글도 10글자 이상부터 남겨집니다."></textarea>
+      <button type="submit" class="btn btn-primary question-btn-margin-top">댓글 남기기</button>
+      <a class="btn btn-success question-btn-margin-top" href="/question/all">목록으로</a>
+    </form>
+  </div>
+
+  <hr>
+
+  <div class="form-group margin-auto question-width">
+    <h5 class="text-center">문의 내용</h5>
+    <textarea cols="30" rows="5" class="form-control" readonly>{{question.content}}</textarea>
+
+    <hr>
+
+    {{#comments}}
+      <p>{{createdAt}}</p>
+      <textarea cols="20" rows="1" class="form-control" readonly>{{comment}}</textarea>
+      <hr>
+    {{/comments}}
+  </div>
+{{/partial}}
+
+{{>base}}

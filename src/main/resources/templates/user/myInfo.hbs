@@ -1,0 +1,26 @@
+{{#partial "content"}}
+  <div class="margin-auto">
+    <h6 class="text-center" style="color: lightcoral">내 정보 수정</h6>
+    <form class="form-group margin-auto text-center" action="/user/myInfo" modelAttribute="myInfo" method="post"
+          style="width: 40%;">
+      <input class="form-control margin-auto sign-up-input-width" type="text" name="userName"
+             value="{{currentUser.login}}"
+             placeholder="GitHub UserName" readonly/>
+      <br/>
+
+      <input class="form-control margin-auto sign-up-input-width" type="text" value="{{department}}" readonly/>
+
+      <br/>
+
+      <select class="form-control margin-auto sign-up-input-width" name="departmentId">
+        {{#departments}}
+          <option value={{id}}>{{departmentName}}</option>
+        {{/departments}}
+      </select>
+      <br/>
+      <button class="btn btn-dark" type="submit">수정</button>
+    </form>
+  </div>
+{{/partial}}
+
+{{>base}}

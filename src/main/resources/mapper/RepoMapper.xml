@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingood.gitup.mapper.RepoMapper">
+
+    <select id="findAllByUserIdOrderByAllCommitCountDesc" resultType="Repo">
+        SELECT r.* FROM repo r
+        WHERE r.userId = #{userId}
+        ORDER BY r.allCommitCount DESC
+    </select>
+
+    <select id="findByRepoNameAndUserId" resultType="Repo">
+        SELECT r.* FROM repo r
+        WHERE r.repoName = #{repoName} AND r.userId = #{userId}
+    </select>
+
+    <insert id="insertRepo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO repo (userId, repoName, repoLanguage, repoUrl, userCommitCount, allCommitCount, userCodeLine, totalCodeLine, contributors)
+        VALUES (#{userId}, #{repoName}, #{repoLanguage}, #{repoUrl}, #{userCommitCount}, #{allCommitCount}, #{userCodeLine}, #{totalCodeLine}, #{contributors})
+    </insert>
+
+    <update id="updateRepo">
+        UPDATE repo
+        SET
+          repoLanguage = #{repoLanguage},
+          userCommitCount = #{userCommitCount},
+          allCommitCount = #{allCommitCount},
+          userCodeLine = #{userCodeLine},
+          totalCodeLine = #{totalCodeLine},
+          contributors = #{contributors}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteRepo">
+        DELETE FROM repo
+        WHERE repoName = #{repoName} AND userId = #{userId}
+    </delete>
+
+</mapper>

@@ -1,0 +1,95 @@
+{{#partial "content"}}
+  <h2 class="text-center">
+    <p><strong>지원 파트 선택</strong></p>
+    <p><strong>최종 지원 완료 후에는 지원서를 수정할 수 없습니다.</strong></p>
+
+    <!-- 이미 작성중인 지원서가 있을 경우에만 나옴 -->
+    <h2 class="text-center index-msg"><b>{{msg}}</b></h2>
+
+    {{#if applyFlag}}
+      <div class="text-center">
+        <a href="/apply/me" class="btn btn-outline-primary">나의 지원서</a>
+        <!--<a href="/apply/delete" class="btn btn-outline-primary" data-confirm-delete>내 지원서 삭제</a>-->
+      </div>
+    {{/if}}
+  </h2>
+
+  <hr>
+
+  <div class="row row justify-content-center">
+    <div class="col-4">
+      <div class="card apply-part-card border-light shadow p-3 mb-5 bg-white rounded">
+        <a href="/apply/form/{{applyPart1.id}}">
+          <img src="/img/pencil.png" alt="기획/홍보/운영" class="card-img-top">
+        </a>
+        <div class="card-body text-dark text-center">
+          <h2><b>기획/홍보/운영</b></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="card apply-part-card border-light shadow p-3 mb-5 bg-white rounded">
+        <a href="/apply/form/{{applyPart2.id}}">
+          <img src="/img/computer.png" alt="개발자" class="card-img-top">
+        </a>
+        <div class="card-body text-dark text-center">
+          <h2><b>개발</b></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="margin-left: 20%;">
+    <h5><i class="fas fa-check"></i>&nbsp;&nbsp;<b>지원 세부 설명</b></h5>
+    <p>
+      모집 대상:&nbsp;&nbsp;GitFlow와 함께하고 싶은 누구나 (Github 계정 보유자)<br>
+      모집 기간:&nbsp;&nbsp;2018. 11. 12 (월) ~ 2018. 11. 23 (금) 오후 2시<br>
+      우대 사항:&nbsp;&nbsp;<b style="color: lightcoral;">본인이 하고자 하는 일에 열정이 넘치시는 분</b><br>
+      지원 파트는 분리되어 있지만, 본인이 원한다면 파트에 관계없이 모든 과정에 참여할 수 있습니다.<br>
+      본인이 공부한 내용을 실제 서비스에 적용하면서 같이 놀고 싶으신 분을 모십니다.
+    </p>
+    <img style="width: 60%;" src="/img/gitflow_apply_process.png" alt="gitflow_apply_process">
+  </div>
+
+  <hr>
+
+  <div style="margin-left: 20%;">
+    <h5><i class="fas fa-check"></i>&nbsp;&nbsp;<b>공통</b></h5>
+    <p>
+      - 'GitFlow' 구성원은 스터디 그룹을 구성하여 계획적인 스터디를 진행합니다.<br>
+      - 전체 개발 과정에 대한 코드 리뷰를 진행합니다.<br>
+      - 1, 2학년 때 '기획/홍보/운영' 활동과 스터디를 통해 성장하고, 3학년 때부터 개발 파트로 기여하면 어떨까요?<br>
+      - <b>결론적으로 여러분의 스펙, 기술 역량 전혀 선발에 반영하지 않습니다.</b><br>
+      - <b>여러분의 열정을 보여주세요.</b>
+    </p>
+  </div>
+
+  <hr>
+
+  <div style="margin-left: 20%;">
+    <h5><i class="fas fa-check"></i>&nbsp;&nbsp;<b>기획/홍보/운영</b></h5>
+    <p>
+      'GitFlow'의 운영을 담당합니다.<br>
+      - 주변에서 필요로 하는 것, 불편해 하는 것이 무엇인지 항상 관심을 갖습니다.<br>
+      - '개발'팀과 협업하며 위 과정을 통해 얻은 아이디어를 구체화합니다.<br>
+      - 'GitFlow' 활동(한 학기 또는 1년)과 홍보의 구체적인 계획을 수립합니다.<br>
+    </p>
+  </div>
+
+  <hr>
+
+  <div class="pg-margin-bottom" style="margin-left: 20%;">
+    <h5><i class="fas fa-check"></i>&nbsp;&nbsp;<b>개발</b></h5>
+    <p>
+      'GitFlow' 유지보수와 개발을 담당합니다.<br>
+      - 'Front-End, Back-End, Android, iOS' 등 모든 개발자를 환영합니다.<br>
+      - '기획/홍보/운영'팀과 협업하며 필요한 서비스 또는 기능을 개발합니다.<br>
+      - 마음에 안 드는 부분이 있다면 회의를 거쳐 뜯어 고칩니다.<br>
+    </p>
+  </div>
+{{/partial}}
+
+{{>base}}

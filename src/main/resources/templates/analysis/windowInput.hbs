@@ -1,0 +1,19 @@
+{{#partial "content"}}
+  <div class="margin-auto text-center">
+    <h3>Git Clone 주소를 입력해주세요.</h3>
+    <form action="/analysis/window/line" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control" name="path"
+               placeholder="저장할 폴더 이름을 입력하세요.">
+        <br>
+        <input type="text" class="form-control" name="gitUrl"
+               placeholder="ex. https://github.com/username/repository.git">
+      </div>
+      <!--<button type="submit" class="btn btn-primary">결과보기</button>-->
+    </form>
+    <br>
+    <!--<a href="/admin/window/reset" class="btn btn-danger">Clone 삭제</a>-->
+  </div>
+{{/partial}}
+
+{{>base}}

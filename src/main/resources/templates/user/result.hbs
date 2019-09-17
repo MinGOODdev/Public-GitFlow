@@ -1,0 +1,129 @@
+{{#partial "content"}}
+  <div class="text-center margin-auto">
+    <div class="alert alert-success" role="alert">
+      <h5>{{repoName}}의 분석 결과입니다.</h5>
+    </div>
+    <div class="table-responsive text-center margin-auto">
+      <table class="table table-bordered table-hover margin-auto">
+        <thead>
+        <tr>
+          <td>UserName</td>
+          <td>작업량</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each contributorWriteCodeMap}}
+          <tr>
+            <td>{{@key}}</td>
+            <td>{{this}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+    <hr>
+
+    <div class="alert alert-success" role="alert">
+      <h5>작업량 세부 정보</h5>
+    </div>
+    <div class="table-responsive text-center margin-auto">
+      {{#each codeMap}}
+        <h3>{{@key}}</h3>
+        <table class="table table-bordered table-hover margin-auto">
+          <thead>
+          <tr>
+            <td>Extension</td>
+            <td>Code Line</td>
+          </tr>
+          </thead>
+          <tbody>
+          {{#each this}}
+            <tr>
+              <td>{{@key}}</td>
+              <td>{{this}}</td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      {{/each}}
+
+      <hr>
+
+      <div class="alert alert-success" role="alert">
+        <h5>작업량 로그</h5>
+      </div>
+      <div class="accordion pg-margin-bottom" id="logMap">
+        {{#each logMap}}
+          <div class="card">
+            <div class="card-header" id="{{@key}}">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#{{@key}}1"
+                        aria-expanded="true" aria-controls="{{@key}}1">{{@key}}</button>
+              </h5>
+            </div>
+
+            <div id="{{@key}}1" class="collapse" aria-labelledby="{{@key}}" data-parent="#logMap">
+              <div class="card-body">
+                <table class="table table-bordered table-hover margin-auto" style="background-color: lightgrey;">
+                  <thead>
+                  <tr>
+                    <td>FileName</td>
+                    <td>Code Line</td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {{#each this}}
+                    <tr>
+                      <td><a href="https://github.com/{{repoOwner}}/{{repoName}}/blob/master/{{@key}}" target="_blank">{{@key}}</a></td>
+                      <td>{{this}}</td>
+                    </tr>
+                  {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+
+      <div class="accordion pg-margin-bottom" id="libraryMap">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-warning collapsed" type="button" data-toggle="collapse" data-target="#library"
+                      aria-expanded="true" aria-controls="library">라이브러리 의심 목록</button>
+            </h5>
+          </div>
+
+          <div id="library" class="collapse" aria-labelledby="headingOne" data-parent="#libraryMap">
+            <div class="card-body">
+              <table class="table table-bordered table-hover margin-auto" style="background-color: lightgrey;">
+                <thead>
+                <tr>
+                  <td>FileName</td>
+                  <td>Code Line</td>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each libraryMap}}
+                  <tr>
+                    <td>{{@key}}</td>
+                    <td>{{this}}</td>
+                  </tr>
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="pg-margin-bottom">
+      <a href="/user/analysis" class="btn btn-info">입력 화면으로 돌아가기</a>
+    </div>
+  </div>
+{{/partial}}
+
+{{>base}}
