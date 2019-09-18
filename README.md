@@ -1,13 +1,13 @@
 # GitFlow - Public
-[전체적인 프로젝트 개요](../GitFlow_Manual.pdf)
+[전체적인 프로젝트 개요](https://github.com/MinGOODdev/Public-GitFlow/blob/master/GitFlow_Manual.pdf)
 
 ## Github API 사용 및 기타
-* [SchedulerAssistant](../src/main/java/org/gitflow/sw/util/scheduler/SchedulerAssistant.java)
-* [GitHubApiUtil](../src/main/java/org/gitflow/sw/util/GitHubApiUtil.java)
-* [EmailSender](../src/main/java/org/gitflow/sw/util/EmailSender.java)
-* [Cmd](../src/main/java/org/gitflow/sw/util/command)
-* [MarkdownRendering](../src/main/java/org/gitflow/sw/util/markdown/MarkDownRendering.java)
-* [테스트코드](../src/test/java/org/gitflow/sw)
+* [SchedulerAssistant](https://github.com/MinGOODdev/Public-GitFlow/blob/master/src/main/java/org/gitflow/sw/util/scheduler/SchedulerAssistant.java)
+* [GitHubApiUtil](https://github.com/MinGOODdev/Public-GitFlow/blob/master/src/main/java/org/gitflow/sw/util/GitHubApiUtil.java)
+* [EmailSender](https://github.com/MinGOODdev/Public-GitFlow/blob/master/src/main/java/org/gitflow/sw/util/EmailSender.java)
+* [Cmd](https://github.com/MinGOODdev/Public-GitFlow/blob/master/src/main/java/org/gitflow/sw/util/command/Cmd.java)
+* [MarkdownRendering](https://github.com/MinGOODdev/Public-GitFlow/blob/master/src/main/java/org/gitflow/sw/util/markdown/MarkDownRendering.java)
+* 테스트 코드
 
 ## Scheduler Logic
 1. 존재하지 않는 Repository 삭제
