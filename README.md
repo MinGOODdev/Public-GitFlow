@@ -1,13 +1,15 @@
 # GitFlow - Public
 [전체적인 프로젝트 개요](https://github.com/MinGOODdev/Public-GitFlow/blob/master/GitFlow_Manual.pdf)
 
-## Github API 사용 및 기타
-* [SchedulerAssistant](https://github.com/MinGOODdev/Public-GitFlow/blob/master/src/main/java/org/gitflow/sw/util/scheduler/SchedulerAssistant.java)
-* [GitHubApiUtil](https://github.com/MinGOODdev/Public-GitFlow/blob/master/src/main/java/org/gitflow/sw/util/GitHubApiUtil.java)
-* [EmailSender](https://github.com/MinGOODdev/Public-GitFlow/blob/master/src/main/java/org/gitflow/sw/util/EmailSender.java)
-* [Cmd](https://github.com/MinGOODdev/Public-GitFlow/blob/master/src/main/java/org/gitflow/sw/util/command/Cmd.java)
-* [MarkdownRendering](https://github.com/MinGOODdev/Public-GitFlow/blob/master/src/main/java/org/gitflow/sw/util/markdown/MarkDownRendering.java)
+## Github API 사용 Class 및 기타
+* SchedulerAssistant
+* GitHubApiUtil
+* EmailSender
+* Cmd
+* MarkdownRendering
 * 테스트 코드
+
+(링크 왜 안 걸리지...)
 
 ## Scheduler Logic
 1. 존재하지 않는 Repository 삭제
