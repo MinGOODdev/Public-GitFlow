@@ -21,8 +21,10 @@ public class ApplyCheckServiceImpl implements ApplyCheckService {
     @Override
     public Boolean applyExistCheck(int userId) {
         ApplyContent applyContent = applyContentService.findByUserId(userId);
-        if (applyContent != null) return true;
-        else return false;
+        if (applyContent != null) {
+            return true;
+        }
+        return false;
     }
 
 }

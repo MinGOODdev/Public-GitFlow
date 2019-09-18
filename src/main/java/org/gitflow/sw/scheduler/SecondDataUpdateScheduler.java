@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -137,7 +138,7 @@ public class SecondDataUpdateScheduler {
                         for (GHCommit commit : commitList) {
                             GHUser ghUser1 = commit.getCommitter();
 
-                            if (ghUser1 != null && ghUser1.getLogin().toLowerCase().equals(userName)) {
+                            if (!ObjectUtils.isEmpty(ghUser1) && ghUser1.getLogin().toLowerCase().equals(userName)) {
                                 for (GHCommit.File file : commit.getFiles()) {
                                     String fileName = file.getFileName().toLowerCase();
 
@@ -278,7 +279,7 @@ public class SecondDataUpdateScheduler {
                         for (GHCommit commit : commitList) {
                             GHUser ghUser1 = commit.getCommitter();
 
-                            if (ghUser1 != null && ghUser1.getLogin().toLowerCase().equals(userName)) {
+                            if (!ObjectUtils.isEmpty(ghUser1) && ghUser1.getLogin().toLowerCase().equals(userName)) {
                                 for (GHCommit.File file : commit.getFiles()) {
                                     String fileName = file.getFileName().toLowerCase();
 

@@ -16,7 +16,9 @@ public class PaginationServiceImpl implements PaginationService {
     @Override
     public boolean pgStartCheck(int pg) {
         boolean pgStart = true;
-        if (pg == 1) pgStart = false;
+        if (pg == 1) {
+            pgStart = false;
+        }
         return pgStart;
     }
 

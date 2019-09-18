@@ -41,13 +41,14 @@ public class UserController {
         GitUser currentUser = userService.findByUserName(userService.getPrincipalUserName());
         model.addAttribute("currentUser", currentUser);
 
-        if (currentUser == null) return "/signUp";
-        else {
-            int departmentId = currentUser.getDepartmentId();
-            commonService.commonAttributeSetting(model);
-            model.addAttribute("department", departmentService.findById(departmentId).getDepartmentName());
-            return "user/myInfo";
+        if (currentUser == null) {
+            return "/signUp";
         }
+
+        int departmentId = currentUser.getDepartmentId();
+        commonService.commonAttributeSetting(model);
+        model.addAttribute("department", departmentService.findById(departmentId).getDepartmentName());
+        return "user/myInfo";
     }
 
     /**

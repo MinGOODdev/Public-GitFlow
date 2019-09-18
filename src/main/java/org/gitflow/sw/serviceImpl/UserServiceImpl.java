@@ -8,6 +8,7 @@ import org.gitflow.sw.util.GitHubApiUtil;
 import org.gitflow.sw.util.security.SHA256Encryption;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
 import java.security.Principal;
@@ -115,8 +116,10 @@ public class UserServiceImpl implements UserService {
     public Boolean checkExistPrincipalUserName() {
         Principal principal = SecurityContextHolder.getContext().getAuthentication();
         String userName = principal.getName();
-        if (userName.equals("anonymousUser")) return false;
-        else return true;
+        if ("anonymousUser".equals(userName)) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -129,13 +132,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public GitUser checkExist(String login, String password) {
         GitUser gitUser = userMapper.findByUserName(login);
-        if (gitUser == null) return null;   // 신규 or 사용자가 ID를 잘못 입력한 경우
+        if (ObjectUtils.isEmpty(gitUser)) {     // 신규 or 사용자가 ID를 잘못 입력한 경우
+            return null;
+        }
 
 //    String encryptPassword = sha256Encryption.encode(password);   // PW 암호화
         String encryptPassword = SHA256Encryption.encrypt(password);
 
 //    if (!sha256Encryption.matches(password, encryptPassword)) return null;
-        if (gitUser.getPassword().equals(encryptPassword) == false) return null;
+        if (gitUser.getPassword().equals(encryptPassword) == false) {
+            return null;
+        }
         return gitUser;
     }
 
@@ -148,7 +155,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean checkUserRankValue(int totalCodeLineRank) {
         boolean flag = false;
-        if (totalCodeLineRank > 0) flag = true;
+        if (totalCodeLineRank > 0) {
+            flag = true;
+        }
         return flag;
     }
 
@@ -190,9 +199,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean userAuthCheck(String userName) {
         GitUser gitUser = userMapper.findByUserName(userName);
-        if (gitUser == null) return false;
-        else if (gitUser.getAuthorization().equals("2")) return true;
-        else return false;
+        if (ObjectUtils.isEmpty(gitUser)) {
+            return false;
+        } else if ("2".equals(gitUser.getAuthorization())) {
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -115,7 +115,7 @@ public class IndexController {
         try {
             model.addAttribute("departments", departmentService.findAll());
 
-            if (httpServletRequest.getMethod().equals("POST")) {
+            if ("POST".equals(httpServletRequest.getMethod())) {
                 GitHub gitHub = GitHub.connectUsingPassword(newbie.getUserName(), newbie.getPassword1());
                 gitHub.getMyself();
                 signUpValidator.validate(newbie, bindingResult);
@@ -124,22 +124,23 @@ public class IndexController {
                     model.addAttribute("msg", "ID와 PW를 확인하세요.");
                     model.addAttribute("departmentId", newbie.getDepartmentId());
                     return "signUp";
-                } else {
-                    gitHubApiUtil.setGitHubMap(newbie.getUserName().toLowerCase());
-                    userService.userInsert(newbie);
-                    gitHubApiUtil.refreshGitHub();
-
-                    //thread, 비동기 신규회원 repo info insert.
-                    NewbieRepoInfoCallableThread thread =
-                            new NewbieRepoInfoCallableThread(asyncService, newbie.getUserName(), newbie.getPassword1());
-
-                    asyncService.runThread(thread);
-
-                    return "redirect:/";
                 }
-            } else {
-                return "signUp";
+
+                gitHubApiUtil.setGitHubMap(newbie.getUserName().toLowerCase());
+                userService.userInsert(newbie);
+                gitHubApiUtil.refreshGitHub();
+
+                //thread, 비동기 신규회원 repo info insert.
+                NewbieRepoInfoCallableThread thread =
+                        new NewbieRepoInfoCallableThread(asyncService, newbie.getUserName(), newbie.getPassword1());
+
+                asyncService.runThread(thread);
+                return "redirect:/";
+
             }
+
+            return "signUp";
+
         } catch (IOException e) {
             model.addAttribute("msg", "ID와 PW를 GitHub 계정과 일치하도록 입력하세요.");
             return "signUp";

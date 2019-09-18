@@ -13,6 +13,7 @@ import org.kohsuke.github.GHUser;
 import org.kohsuke.github.GitHub;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -114,7 +115,7 @@ public class RepoAnalysisForUserController {
             for (GHCommit commit : commitList) {
                 GHUser ghUser = commit.getCommitter();
 
-                if (ghUser != null && !ghUser.getLogin().equals(WEB_FLOW)) {
+                if (!ObjectUtils.isEmpty(ghUser) && !WEB_FLOW.equals(ghUser.getLogin())) {
                     String userName = ghUser.getLogin().toLowerCase();
 
                     for (GHCommit.File file : commit.getFiles()) {

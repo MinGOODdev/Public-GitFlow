@@ -50,7 +50,9 @@ public class NewbieRepoInfoCallableThread implements Callable<String> {
             log.info("[" + Thread.currentThread().getName() + "]" + this.username + " 시작");
 
             boolean insertSuccessed = asyncService.insertNewbieInfo(this.username, this.password);
-            if (!insertSuccessed) return "비동기 로직 에러";
+            if (!insertSuccessed) {
+                return "비동기 로직 에러";
+            }
 
         } catch (Exception e) {
             e.getCause().printStackTrace();

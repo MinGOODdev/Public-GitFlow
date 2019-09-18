@@ -62,8 +62,10 @@ public class ApplyController {
         model.addAttribute("applyPart2", applyPartService.findById(2));
         model.addAttribute("applyFlag", applyFlag);
 
-        if (optionFlag) return "apply/main";
-        else return "apply/end";
+        if (optionFlag) {
+            return "apply/main";
+        }
+        return "apply/end";
     }
 
     /**
@@ -91,9 +93,12 @@ public class ApplyController {
             if (applyFlag) {
                 redirectAttributes.addFlashAttribute("msg", "이미 작성된 지원서가 존재합니다.");
                 return "redirect:/apply/main";
-            } else return "apply/form";
-            // 지원 불가능
-        } else return "apply/end";
+            }
+            return "apply/form";
+        }
+
+        // 지원 불가능
+        return "apply/end";
     }
 
     /**
@@ -109,14 +114,14 @@ public class ApplyController {
                               BindingResult bindingResult) throws MessagingException {
         if (bindingResult.hasErrors()) {
             return "redirect:/apply/form/" + applyContent.getPartId();
-        } else {
-            commonService.commonAttributeSetting(model);
-            applyContentService.insert(applyContent);
-
-            // 최종 지원 완료 시 메일 전송
-            emailSender.applyConfirmEmail(applyContent.getUserName(), applyContent.getEmail());
-            return "apply/success";
         }
+
+        commonService.commonAttributeSetting(model);
+        applyContentService.insert(applyContent);
+
+        // 최종 지원 완료 시 메일 전송
+        emailSender.applyConfirmEmail(applyContent.getUserName(), applyContent.getEmail());
+        return "apply/success";
     }
 
     /**
@@ -133,7 +138,8 @@ public class ApplyController {
         if (optionFlag) {
             applyContentService.deleteByUserId(currentUser.getId());
             return "redirect:/apply/main";
-        } else return "apply/end";
+        }
+        return "apply/end";
     }
 
     /**

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("newbie")
 public class NewbieController {
+
     private FrontService frontService;
     private BackService backService;
     private PaginationService paginationService;

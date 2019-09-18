@@ -8,6 +8,8 @@ import org.gitflow.sw.util.scheduler.SchedulerAssistant;
 import org.kohsuke.github.GHRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -36,8 +38,10 @@ public class SchedulerServiceImpl implements SchedulerService {
     @Override
     public boolean schedulerRunningCheck() {
         int schedulerActive = optionFlagService.findById(1).getSchedulerActive();
-        if (schedulerActive == 1) return true;
-        else return false;
+        if (schedulerActive == 1) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -57,23 +61,33 @@ public class SchedulerServiceImpl implements SchedulerService {
                                        GHRepository ghRepo, List<Repo> changedRepoList) {
         int gitCommits = ghRepo.listCommits().asList().size();  // 전체 커밋 수
         int dbCommits = 0;
-        if (repo != null) dbCommits = repo.getAllCommitCount();
+        if (!ObjectUtils.isEmpty(repo)) {
+            dbCommits = repo.getAllCommitCount();
+        }
 
-        if (repo != null && (gitCommits != dbCommits)) {
-            if (ghRepo.getLanguage() == null) repo.setRepoLanguage("Markdown");
-            else repo.setRepoLanguage(ghRepo.getLanguage());
+        if (!ObjectUtils.isEmpty(repo) && (gitCommits != dbCommits)) {
+            if (StringUtils.isEmpty(ghRepo.getLanguage())) {
+                repo.setRepoLanguage("Markdown");
+            } else {
+                repo.setRepoLanguage(ghRepo.getLanguage());
+            }
             repo.setAllCommitCount(gitCommits);
             repo.setContributors(schedulerAssistant.repoContributorCount(ghRepo));
             repoService.updateRepo(repo);
 
             changedRepoList.add(repo);
             log.info("update** {}", repo);
-        } else if (repo == null) {
+        } else if (ObjectUtils.isEmpty(repo)) {
             Repo tempRepo = new Repo();
             tempRepo.setUserId(userId);
             tempRepo.setRepoName(ghRepo.getName());
-            if (ghRepo.getLanguage() == null) tempRepo.setRepoLanguage("Markdown");
-            else tempRepo.setRepoLanguage(ghRepo.getLanguage());
+
+            if (StringUtils.isEmpty(ghRepo.getLanguage())) {
+                tempRepo.setRepoLanguage("Markdown");
+            } else {
+                tempRepo.setRepoLanguage(ghRepo.getLanguage());
+            }
+
             tempRepo.setRepoUrl(ghRepo.getHttpTransportUrl());
             tempRepo.setAllCommitCount(gitCommits);
             tempRepo.setContributors(schedulerAssistant.repoContributorCount(ghRepo));

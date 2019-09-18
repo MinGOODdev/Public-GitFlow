@@ -12,6 +12,7 @@ import org.kohsuke.github.GHUser;
 import org.kohsuke.github.GitHub;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -128,7 +129,7 @@ public class AsyncServiceImpl implements AsyncService {
                     for (GHCommit commit : commitList) {
                         GHUser ghUser1 = commit.getCommitter();
 
-                        if (ghUser1 != null && ghUser1.getLogin().toLowerCase().equals(username)) {
+                        if (!ObjectUtils.isEmpty(ghUser1) && ghUser1.getLogin().toLowerCase().equals(username)) {
                             for (GHCommit.File file : commit.getFiles()) {
 
                                 String fileName = file.getFileName().toLowerCase();

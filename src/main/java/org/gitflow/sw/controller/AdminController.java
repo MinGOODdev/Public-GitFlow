@@ -11,6 +11,7 @@ import org.kohsuke.github.GitHub;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -167,7 +168,7 @@ public class AdminController {
             for (GHCommit commit : commitList) {
                 GHUser ghUser = commit.getCommitter();
 
-                if (ghUser != null && !ghUser.getLogin().equals(WEB_FLOW)) {
+                if (!ObjectUtils.isEmpty(ghUser) && !WEB_FLOW.equals(ghUser.getLogin())) {
                     String userName = ghUser.getLogin().toLowerCase();
 
                     for (GHCommit.File file : commit.getFiles()) {
