@@ -11,8 +11,6 @@
 * MarkdownRendering
 * 테스트 코드
 
-(링크 왜 안 걸리지...)
-
 ## Scheduler Logic
 1. 존재하지 않는 Repository 삭제
 2. Repository 전체 작업량 갱신
